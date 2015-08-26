@@ -1,6 +1,6 @@
 # immutable-editor
 
-immutable-editor is a React component used to live-edit datastructures created with Facebook's Immutable.JS, complete with Undo and Redo.
+immutable-editor is a React component used to live-edit data structures created with Facebook's Immutable.JS, complete with Undo and Redo.
 
 Currently supports Maps, Lists and primitive types (String, Number, Boolean).
 
