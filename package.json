@@ -1,5 +1,5 @@
 {
-  "name": "json-editor",
+  "name": "immutable-editor",
   "version": "0.0.1",
   "description": "React JSON editor",
   "main": "dist/index.js",
