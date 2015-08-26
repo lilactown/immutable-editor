@@ -3,8 +3,8 @@ const React = require('react');
 
 const HistoryModel = require('../models/HistoryModel');
 
-const Entry = require('./Entry.jsx');
-const Toolbar = require('./Toolbar.jsx');
+const Entry = require('./Entry');
+const Toolbar = require('./Toolbar');
 
 const editorStyle = {
 	color: "#F8F8F2",

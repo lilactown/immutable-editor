@@ -4,8 +4,8 @@ const Cursor = require('immutable/contrib/cursor');
 const {List, Map} = Immutable;
 const assign = require('object-assign');
 
-const AddMapEntry = require('./AddMapEntry.jsx');
-const AddListEntry = require('./AddListEntry.jsx');
+const AddMapEntry = require('./AddMapEntry');
+const AddListEntry = require('./AddListEntry');
 
 const inputStyle = {
 	fontFamily: '"Source Code Pro", monospace',
