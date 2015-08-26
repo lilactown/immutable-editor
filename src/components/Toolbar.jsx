@@ -16,7 +16,7 @@ const toolbarStyle = {
 	padding: "0",
 	WebkitFontSmoothing: "antialiased",
 	fontSize: "13px",
-	position: "fixed",
+	position: "absolute",
 	left: "100%",
 	transform: "translateX(-110px)"
 }
