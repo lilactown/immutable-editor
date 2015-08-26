@@ -19,7 +19,7 @@ var toolbarStyle = {
 	WebkitFontSmoothing: "antialiased",
 	fontSize: "13px",
 	position: "fixed",
-	left: "50%",
+	left: "100%",
 	transform: "translateX(-110px)"
 };
 

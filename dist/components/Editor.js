@@ -5,12 +5,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var React = require('react');
 
+var _require = require('immutable');
+
+var Map = _require.Map;
+var List = _require.List;
+
 var HistoryModel = require('../models/HistoryModel');
 
 var Entry = require('./Entry');
 var Toolbar = require('./Toolbar');
+var AddMapEntry = require('./AddMapEntry');
+var AddListEntry = require('./AddListEntry');
 
 var editorStyle = {
+	background: '#282828',
 	color: "#F8F8F2",
 	fontFamily: '"Source Code Pro", monospace',
 	fontSize: "16px",
@@ -35,7 +43,9 @@ var Editor = React.createClass({
 	render: function render() {
 		var _this = this;
 
-		console.log(this.props.cursor.size);
+		// console.log(this.props.cursor.size);
+		var isMap = Map.isMap(this.props.data);
+		var isList = List.isList(this.props.data);
 		return React.createElement(
 			'div',
 			{ style: editorStyle },
@@ -43,7 +53,7 @@ var Editor = React.createClass({
 				'div',
 				{ style: { margin: "0px 10px" } },
 				React.createElement(Toolbar, { cursor: this.props.cursor }),
-				'{',
+				isMap ? '{' : '[',
 				React.createElement(
 					'div',
 					{ style: { marginLeft: "5px" } },
@@ -54,9 +64,10 @@ var Editor = React.createClass({
 							key: key,
 							keyName: key
 						}));
-					}).toList()
+					}).toList(),
+					this.props.minEditDepth === 0 ? isMap ? React.createElement(AddMapEntry, { cursor: this.props.cursor }) : React.createElement(AddListEntry, { cursor: this.props.cursor }) : ''
 				),
-				'}'
+				isMap ? '}' : ']'
 			)
 		);
 	}

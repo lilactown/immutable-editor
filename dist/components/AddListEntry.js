@@ -21,7 +21,11 @@ var AddListEntry = React.createClass({
 			list: new List([]),
 			string: ""
 		};
-		this.props.cursor.get(this.props.keyName).push(types[this.state.dataType]);
+		if (this.props.keyName) {
+			this.props.cursor.get(this.props.keyName).push(types[this.state.dataType]);
+		} else {
+			this.props.cursor.push(types[this.state.dataType]);
+		}
 		this.toggleOptions();
 	},
 	toggleOptions: function toggleOptions() {
