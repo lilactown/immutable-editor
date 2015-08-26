@@ -8,7 +8,7 @@ Currently supports Maps, Lists and primitive types (String, Number, Boolean).
 
 ### Installation:
 ```
-npm install Lokeh/immutable-editor
+npm install immutable-editor
 ```
 
 ### Use:
