@@ -1,3 +1,3 @@
 // index.js
 
-module.exports = require('./components/Editor.jsx');
+module.exports = require('./components/Editor');
