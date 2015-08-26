@@ -2,7 +2,7 @@
   "name": "json-editor",
   "version": "0.0.1",
   "description": "React JSON editor",
-  "main": "dist/js/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
