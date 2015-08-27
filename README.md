@@ -47,6 +47,8 @@ const MyApp = React.createClass({
 React.render(<MyApp />, document.getElementById('app'));
 ```
 
+If you're using Immutable.js in your project, you can tell the editor to pass back immutable data by setting the `immutable` flag on the `<Editor />` component.
+
 ### Dependencies
 
 The editor has two external dependencies: FontAwesome (for font icons) and the Source Code Pro font. They can be included like so:
