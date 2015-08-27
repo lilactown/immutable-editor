@@ -9,6 +9,7 @@ var Map = Immutable.Map;
 var List = Immutable.List;
 
 var Cursor = require('immutable/contrib/cursor');
+var fs = require('../libs/FileSaver');
 
 var HistoryModel = require('../models/HistoryModel');
 
@@ -41,7 +42,10 @@ var Editor = React.createClass({
 			// this.props.cursor.update((v) => { return nextState; });
 			return nextState;
 		},
-		save: function save() {}
+		save: function save(name) {
+			var blob = new Blob([JSON.stringify(HistoryModel.get(HistoryModel.getAll().offset).toJS())], { type: "application/json;charset=utf-8" });
+			fs.saveAs(blob, name);
+		}
 	},
 	propTypes: {
 		data: React.PropTypes.object.isRequired,
