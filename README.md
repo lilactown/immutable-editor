@@ -1,44 +1,42 @@
 # immutable-editor
 
-immutable-editor is a React component used to live-edit data structures created with Facebook's Immutable.JS, complete with Undo and Redo.
+immutable-editor is a React component used to live-edit JSON data, complete with change history (undo/redo) and file saving.
 
-Currently supports Maps, Lists and primitive types (String, Number, Boolean).
+Underneath the hood, it uses Facebook's Immutable.js library for performance.
+
+## Changelog
+
+### 0.1.0 - 2015-08-27:
+	- Change API to allow generic JSON and callback instead of requiring client to use Immutable types/cursors
+
 
 ## How to use
 
 ### Installation:
 ```
-npm install immutable-editor
+npm install immutable-editor --save
 ```
 
 ### Use:
 ```javascript
 const React = require('react');
-const Immutable = require('immutable');
-const Cursor = require('immutable/contrib/cursor');
 const Editor = require('immutable-editor');
 
 const MyApp = React.createClass({
 	getInitialState() {
 		return {
-			data: Immutable.fromJS({
+			data: {
 				hello: {
 					world: "!"
 				}
-			})
+			}
 		}
 	},
 	render() {
-		const cursor = Cursor.from(this.state.data, (newData, oldData, path) => {
-			if (newData !== oldData) {
-				this.setState({ data: newData });
-			}
-		});
-
 		return (
 			<Editor
 				data={this.state.data}
-				cursor={cursor}
+				onUpdate={(data) => this.setState({ data })}
 				minEditDepth={0}
 				minRemovalDepth={0}
 			/>

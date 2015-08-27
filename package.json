@@ -1,6 +1,6 @@
 {
   "name": "immutable-editor",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "React JSON editor",
   "main": "dist/index.js",
   "scripts": {
@@ -13,7 +13,10 @@
   "keywords": [
     "json",
     "editor",
-    "immutable"
+    "object",
+    "data",
+    "immutable",
+    "react"
   ],
   "author": "Will Acton",
   "license": "MIT",

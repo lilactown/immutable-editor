@@ -1,6 +1,8 @@
 // Top-level component
 const React = require('react');
-const { Map, List } = require('immutable');
+const Immutable = require('immutable');
+const { Map, List } = Immutable;
+const Cursor = require('immutable/contrib/cursor');
 
 const HistoryModel = require('../models/HistoryModel');
 
@@ -19,31 +21,41 @@ const editorStyle = {
 
 const Editor = React.createClass({
 	propTypes: {
-		name: React.PropTypes.string
+		data: React.PropTypes.object.isRequired,
+		onUpdate: React.PropTypes.func.isRequired,
+		immutable: React.PropTypes.bool,
+		minEditDepth: React.PropTypes.number,
+		minRemovalDepth: React.PropTypes.number
 	},
 	componentDidMount() {
-		HistoryModel.push(this.props.data);
-	},
-	componentWillReceiveProps(nextProps) {
-		HistoryModel.push(nextProps.data);
+		HistoryModel.push(Immutable.fromJS(this.props.data));
 	},
 	shouldComponentUpdate(nextProps) {
 		return this.props.data !== nextProps.data;
 	},
 	render() {
-		// console.log(this.props.cursor.size);
+		const data = Immutable.fromJS(this.props.data);
+
+		const rootCursor = Cursor.from(data, (newData, oldData, path) => {
+			console.log(newData !== oldData);
+			if (newData !== oldData) {
+				HistoryModel.push(newData);
+				this.props.onUpdate(this.props.immutable ? newData : newData.toJS());
+			}
+		});
+
 		const isMap = Map.isMap(this.props.data);
 		const isList = List.isList(this.props.data);
 		return (
 			<div style={editorStyle}>
 				<div style={{ margin: "0px 10px" }}>
-					<Toolbar cursor={this.props.cursor} />
+					<Toolbar cursor={rootCursor} />
 					{isMap ? '{' : '['}
 					<div style={{marginLeft: "5px"}}>
-						{this.props.data.map((entry, key) => 
+						{data.map((entry, key) => 
 							(<Entry
 								{...this.props}
-								cursor={this.props.cursor}
+								cursor={rootCursor}
 								value={entry}
 								key={key}
 								keyName={key}
@@ -51,8 +63,8 @@ const Editor = React.createClass({
 						).toList()}
 						{this.props.minEditDepth === 0
 							? (isMap
-								? (<AddMapEntry cursor={this.props.cursor} />)
-								: (<AddListEntry cursor={this.props.cursor} />)
+								? (<AddMapEntry cursor={rootCursor} />)
+								: (<AddListEntry cursor={rootCursor} />)
 							) : ''
 						}
 					</div>

@@ -4,11 +4,11 @@
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var React = require('react');
+var Immutable = require('immutable');
+var Map = Immutable.Map;
+var List = Immutable.List;
 
-var _require = require('immutable');
-
-var Map = _require.Map;
-var List = _require.List;
+var Cursor = require('immutable/contrib/cursor');
 
 var HistoryModel = require('../models/HistoryModel');
 
@@ -29,13 +29,12 @@ var Editor = React.createClass({
 	displayName: 'Editor',
 
 	propTypes: {
-		name: React.PropTypes.string
+		data: React.PropTypes.object.isRequired,
+		onUpdate: React.PropTypes.func.isRequired,
+		immutable: React.PropTypes.bool
 	},
 	componentDidMount: function componentDidMount() {
-		HistoryModel.push(this.props.data);
-	},
-	componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-		HistoryModel.push(nextProps.data);
+		HistoryModel.push(Immutable.fromJS(this.props.data));
 	},
 	shouldComponentUpdate: function shouldComponentUpdate(nextProps) {
 		return this.props.data !== nextProps.data;
@@ -43,7 +42,17 @@ var Editor = React.createClass({
 	render: function render() {
 		var _this = this;
 
-		// console.log(this.props.cursor.size);
+		console.log('r');
+		var data = Immutable.fromJS(this.props.data);
+
+		var rootCursor = Cursor.from(data, function (newData, oldData, path) {
+			console.log(newData !== oldData);
+			if (newData !== oldData) {
+				HistoryModel.push(newData);
+				_this.props.onUpdate(_this.props.immutable ? newData : newData.toJS());
+			}
+		});
+
 		var isMap = Map.isMap(this.props.data);
 		var isList = List.isList(this.props.data);
 		return React.createElement(
@@ -52,20 +61,20 @@ var Editor = React.createClass({
 			React.createElement(
 				'div',
 				{ style: { margin: "0px 10px" } },
-				React.createElement(Toolbar, { cursor: this.props.cursor }),
+				React.createElement(Toolbar, { cursor: rootCursor }),
 				isMap ? '{' : '[',
 				React.createElement(
 					'div',
 					{ style: { marginLeft: "5px" } },
-					this.props.data.map(function (entry, key) {
+					data.map(function (entry, key) {
 						return React.createElement(Entry, _extends({}, _this.props, {
-							cursor: _this.props.cursor,
+							cursor: rootCursor,
 							value: entry,
 							key: key,
 							keyName: key
 						}));
 					}).toList(),
-					this.props.minEditDepth === 0 ? isMap ? React.createElement(AddMapEntry, { cursor: this.props.cursor }) : React.createElement(AddListEntry, { cursor: this.props.cursor }) : ''
+					this.props.minEditDepth === 0 ? isMap ? React.createElement(AddMapEntry, { cursor: rootCursor }) : React.createElement(AddListEntry, { cursor: rootCursor }) : ''
 				),
 				isMap ? '}' : ']'
 			)
