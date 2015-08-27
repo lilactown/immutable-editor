@@ -28,6 +28,21 @@ var editorStyle = {
 var Editor = React.createClass({
 	displayName: 'Editor',
 
+	statics: {
+		undo: function undo() {
+			HistoryModel.incOffset();
+			var nextState = HistoryModel.get(HistoryModel.getAll().offset);
+			// this.props.cursor.update((v) => { return nextState; });
+			return nextState;
+		},
+		redo: function redo() {
+			HistoryModel.decOffset();
+			var nextState = HistoryModel.get(HistoryModel.getAll().offset);
+			// this.props.cursor.update((v) => { return nextState; });
+			return nextState;
+		},
+		save: function save() {}
+	},
 	propTypes: {
 		data: React.PropTypes.object.isRequired,
 		onUpdate: React.PropTypes.func.isRequired,
@@ -62,7 +77,6 @@ var Editor = React.createClass({
 			React.createElement(
 				'div',
 				{ style: { margin: "0px 10px" } },
-				React.createElement(Toolbar, { cursor: rootCursor }),
 				isMap ? '{' : '[',
 				React.createElement(
 					'div',
@@ -86,3 +100,4 @@ var Editor = React.createClass({
 window.HistoryModel = HistoryModel;
 
 module.exports = Editor;
+/*<Toolbar cursor={rootCursor} />*/
