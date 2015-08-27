@@ -6,6 +6,9 @@ Underneath the hood, it uses Facebook's Immutable.js library for performance.
 
 ## Changelog
 
+### 0.2.0 - 2015-08-27:
+	- Remove toolbar and expose history API as static methods on `Editor` component
+
 ### 0.1.0 - 2015-08-27:
 	- Change API to allow generic JSON and callback instead of requiring client to use Immutable types/cursors
 
