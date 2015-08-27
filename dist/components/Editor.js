@@ -14,7 +14,7 @@ var fs = require('../libs/FileSaver');
 var HistoryModel = require('../models/HistoryModel');
 
 var Entry = require('./Entry');
-var Toolbar = require('./Toolbar');
+// const Toolbar = require('./Toolbar');
 var AddMapEntry = require('./AddMapEntry');
 var AddListEntry = require('./AddListEntry');
 

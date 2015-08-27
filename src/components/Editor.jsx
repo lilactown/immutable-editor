@@ -8,7 +8,7 @@ const fs = require('../libs/FileSaver');
 const HistoryModel = require('../models/HistoryModel');
 
 const Entry = require('./Entry');
-const Toolbar = require('./Toolbar');
+// const Toolbar = require('./Toolbar');
 const AddMapEntry = require('./AddMapEntry');
 const AddListEntry = require('./AddListEntry');
 
