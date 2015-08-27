@@ -31,16 +31,20 @@ var Editor = React.createClass({
 
 	statics: {
 		undo: function undo() {
+			var immutable = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
+
 			HistoryModel.incOffset();
 			var nextState = HistoryModel.get(HistoryModel.getAll().offset);
 			// this.props.cursor.update((v) => { return nextState; });
-			return nextState;
+			return immutable ? nextState : nextState.toJS();
 		},
 		redo: function redo() {
+			var immutable = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
+
 			HistoryModel.decOffset();
 			var nextState = HistoryModel.get(HistoryModel.getAll().offset);
 			// this.props.cursor.update((v) => { return nextState; });
-			return nextState;
+			return immutable ? nextState : nextState.toJS();
 		},
 		save: function save(name) {
 			var blob = new Blob([JSON.stringify(HistoryModel.get(HistoryModel.getAll().offset).toJS())], { type: "application/json;charset=utf-8" });

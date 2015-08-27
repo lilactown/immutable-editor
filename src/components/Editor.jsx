@@ -22,17 +22,17 @@ const editorStyle = {
 
 const Editor = React.createClass({
 	statics: {
-		undo() {
+		undo(immutable = false) {
 			HistoryModel.incOffset();
 			const nextState = HistoryModel.get(HistoryModel.getAll().offset);
 			// this.props.cursor.update((v) => { return nextState; });
-			return nextState;
+			return immutable ? nextState : nextState.toJS();
 		},
-		redo() {
+		redo(immutable = false) {
 			HistoryModel.decOffset();
 			const nextState = HistoryModel.get(HistoryModel.getAll().offset);
 			// this.props.cursor.update((v) => { return nextState; });
-			return nextState;
+			return immutable ? nextState : nextState.toJS();
 		},
 		save(name) {
 			const blob = new Blob([JSON.stringify(HistoryModel.get(HistoryModel.getAll().offset).toJS())], {type: "application/json;charset=utf-8"});

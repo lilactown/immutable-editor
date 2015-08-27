@@ -34,12 +34,17 @@ const MyApp = React.createClass({
 	},
 	render() {
 		return (
-			<Editor
-				data={this.state.data}
-				onUpdate={(data) => this.setState({ data })}
-				minEditDepth={0}
-				minRemovalDepth={0}
-			/>
+			<div>
+				<button onClick={() => this.setState({ data: Editor.undo() })}>undo</button>
+				<button onClick={() => this.setState({ data: Editor.redo() })}>redo</button>
+				<button onClick={() => Editor.save('test.json')}>save</button>
+				<Editor
+					data={this.state.data}
+					onUpdate={(data) => this.setState({ data })}
+					minEditDepth={0}
+					minRemovalDepth={0}
+				/>
+			</div>
 		);
 	}
 });
@@ -47,7 +52,7 @@ const MyApp = React.createClass({
 React.render(<MyApp />, document.getElementById('app'));
 ```
 
-If you're using Immutable.js in your project, you can tell the editor to pass back immutable data by setting the `immutable` flag on the `<Editor />` component.
+If you're using Immutable.js in your project, you can tell the editor to pass back immutable data by setting the `immutable` flag on the `<Editor />` component, as well as passing `true` to `undo` and `redo()` (e.g. `Editor.undo(true)` to get the previous Immutable type instead of JS object).
 
 ### Dependencies
 
