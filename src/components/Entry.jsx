@@ -12,13 +12,14 @@ const inputStyle = {
 	background: '#282828',
 	border: '0',
 	color: '#E6DB74',
-	wordBreak: 'break-word'
+	wordBreak: 'break-word',
+	fontSize: 'inherit'
 };
 
 const inputContainerStyle = {
 	fontFamily: '"Source Code Pro", monospace',
 	color: '#E6DB74',
-	fontSize: '11px'
+	// fontSize: '11px'
 };
 
 const Entry = React.createClass({

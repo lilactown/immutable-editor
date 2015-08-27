@@ -18,15 +18,16 @@ var inputStyle = {
 	background: '#282828',
 	border: '0',
 	color: '#E6DB74',
-	wordBreak: 'break-word'
+	wordBreak: 'break-word',
+	fontSize: 'inherit'
 };
 
 var inputContainerStyle = {
 	fontFamily: '"Source Code Pro", monospace',
-	color: '#E6DB74',
-	fontSize: '11px'
+	color: '#E6DB74'
 };
 
+// fontSize: '11px'
 var Entry = React.createClass({
 	displayName: 'Entry',
 

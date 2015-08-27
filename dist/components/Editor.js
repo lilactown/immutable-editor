@@ -31,7 +31,9 @@ var Editor = React.createClass({
 	propTypes: {
 		data: React.PropTypes.object.isRequired,
 		onUpdate: React.PropTypes.func.isRequired,
-		immutable: React.PropTypes.bool
+		immutable: React.PropTypes.bool,
+		minEditDepth: React.PropTypes.number,
+		minRemovalDepth: React.PropTypes.number
 	},
 	componentDidMount: function componentDidMount() {
 		HistoryModel.push(Immutable.fromJS(this.props.data));
@@ -42,7 +44,6 @@ var Editor = React.createClass({
 	render: function render() {
 		var _this = this;
 
-		console.log('r');
 		var data = Immutable.fromJS(this.props.data);
 
 		var rootCursor = Cursor.from(data, function (newData, oldData, path) {
