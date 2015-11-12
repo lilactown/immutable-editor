@@ -78,6 +78,7 @@ const Entry = React.createClass({
 			|| this.props.style !== nextProps.style
 			|| this.state.collapsed !== nextState.collapsed
 			|| this.state.inputValue !== nextState.inputValue
+			|| this.props.cursor !== nextProps.cursor;
 	},
 	render() {
 		const cursor = this.props.cursor.get(this.props.keyName);
