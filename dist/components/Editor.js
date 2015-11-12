@@ -1,8 +1,8 @@
-// Top-level component
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+// Top-level component
 var React = require('react');
 var Immutable = require('immutable');
 var Map = Immutable.Map;
@@ -81,23 +81,47 @@ var Editor = React.createClass({
 		var isList = List.isList(this.props.data);
 		return React.createElement(
 			'div',
-			{ style: editorStyle },
+			{ style: editorStyle, __source: {
+					fileName: '../../../src/components/Editor.jsx',
+					lineNumber: 69
+				}
+			},
 			React.createElement(
 				'div',
-				{ style: { margin: "0px 10px" } },
+				{ style: { margin: "0px 10px" }, __source: {
+						fileName: '../../../src/components/Editor.jsx',
+						lineNumber: 70
+					}
+				},
 				isMap ? '{' : '[',
 				React.createElement(
 					'div',
-					{ style: { marginLeft: "5px" } },
+					{ style: { marginLeft: "5px" }, __source: {
+							fileName: '../../../src/components/Editor.jsx',
+							lineNumber: 73
+						}
+					},
 					data.map(function (entry, key) {
 						return React.createElement(Entry, _extends({}, _this.props, {
 							cursor: rootCursor,
 							value: entry,
 							key: key,
-							keyName: key
+							keyName: key,
+							__source: {
+								fileName: '../../../src/components/Editor.jsx',
+								lineNumber: 75
+							}
 						}));
 					}).toList(),
-					this.props.minEditDepth === 0 ? isMap ? React.createElement(AddMapEntry, { cursor: rootCursor }) : React.createElement(AddListEntry, { cursor: rootCursor }) : ''
+					this.props.minEditDepth === 0 ? isMap ? React.createElement(AddMapEntry, { cursor: rootCursor, __source: {
+							fileName: '../../../src/components/Editor.jsx',
+							lineNumber: 85
+						}
+					}) : React.createElement(AddListEntry, { cursor: rootCursor, __source: {
+							fileName: '../../../src/components/Editor.jsx',
+							lineNumber: 86
+						}
+					}) : ''
 				),
 				isMap ? '}' : ']'
 			)
@@ -108,4 +132,3 @@ var Editor = React.createClass({
 window.HistoryModel = HistoryModel;
 
 module.exports = Editor;
-/*<Toolbar cursor={rootCursor} />*/

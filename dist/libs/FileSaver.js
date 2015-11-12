@@ -1,3 +1,5 @@
+"use strict";
+
 /* FileSaver.js
  * A saveAs() FileSaver implementation.
  * 1.1.20150716
@@ -12,22 +14,21 @@
 
 /*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
 
-"use strict";
-
 var saveAs = saveAs || (function (view) {
-	"use strict";
+	"use strict"
 	// IE <10 is explicitly unsupported
+	;
 	if (typeof navigator !== "undefined" && /MSIE [1-9]\./.test(navigator.userAgent)) {
 		return;
 	}
-	var doc = view.document,
-	   
+	var doc = view.document
 	// only get URL when necessary in case Blob.js hasn't overridden it yet
-	get_URL = function get_URL() {
+	,
+	    get_URL = function get_URL() {
 		return view.URL || view.webkitURL || view;
 	},
 	    save_link = doc.createElementNS("http://www.w3.org/1999/xhtml", "a"),
-	    can_use_save_link = ("download" in save_link),
+	    can_use_save_link = "download" in save_link,
 	    click = function click(node) {
 		var event = new MouseEvent("click");
 		node.dispatchEvent(event);
@@ -40,14 +41,14 @@ var saveAs = saveAs || (function (view) {
 		}, 0);
 	},
 	    force_saveable_type = "application/octet-stream",
-	    fs_min_size = 0,
-	   
+	    fs_min_size = 0
 	// See https://code.google.com/p/chromium/issues/detail?id=375297#c7 and
 	// https://github.com/eligrey/FileSaver.js/commit/485930a#commitcomment-8768047
 	// for the reasoning behind the timeout and revocation flow
-	arbitrary_revoke_timeout = 500,
-	    // in ms
-	revoke = function revoke(file) {
+	,
+	    arbitrary_revoke_timeout = 500 // in ms
+	,
+	    revoke = function revoke(file) {
 		var revoker = function revoker() {
 			if (typeof file === "string") {
 				// file is an object URL
@@ -96,10 +97,10 @@ var saveAs = saveAs || (function (view) {
 		    target_view,
 		    dispatch_all = function dispatch_all() {
 			dispatch(filesaver, "writestart progress write writeend".split(" "));
-		},
-		   
+		}
 		// on any filesys errors revert to saving with object URLs
-		fs_error = function fs_error() {
+		,
+		    fs_error = function fs_error() {
 			// don't create more object URLs than needed
 			if (blob_changed || !object_url) {
 				object_url = get_URL().createObjectURL(blob);

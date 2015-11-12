@@ -23,7 +23,7 @@ var HistoryModel = assign({}, EventEmitter.prototype, {
 	removeChangeListener: function removeChangeListener(cb) {
 		this.removeListener(CHANGE_EVENT, cb);
 	},
-	'new': function _new(newModel) {
+	new: function _new(newModel) {
 		_model = newModel;
 		this.emitChange();
 	},

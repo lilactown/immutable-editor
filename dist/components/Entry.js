@@ -58,7 +58,7 @@ var Entry = React.createClass({
 	},
 	deletePath: function deletePath(e) {
 		e.preventDefault();
-		this.props.cursor['delete'](this.props.keyName);
+		this.props.cursor.delete(this.props.keyName);
 	},
 	toggleCollapsed: function toggleCollapsed(e) {
 		e.preventDefault();
@@ -75,7 +75,7 @@ var Entry = React.createClass({
 		});
 	},
 	shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
-		return this.props.value !== nextProps.value || this.props.style !== nextProps.style || this.state.collapsed !== nextState.collapsed || this.state.inputValue !== nextState.inputValue;
+		return this.props.value !== nextProps.value || this.props.style !== nextProps.style || this.state.collapsed !== nextState.collapsed || this.state.inputValue !== nextState.inputValue || this.props.cursor !== nextProps.cursor;
 	},
 	render: function render() {
 		var _this = this;
@@ -92,11 +92,23 @@ var Entry = React.createClass({
 		var hideEntry = { display: collapsed ? 'none' : 'block' };
 		return React.createElement(
 			'div',
-			{ style: assign({ marginLeft: "20px" }, this.props.style) },
+			{ style: assign({ marginLeft: "20px" }, this.props.style), __source: {
+					fileName: '../../../src/components/Entry.jsx',
+					lineNumber: 96
+				}
+			},
 			isMap || isList ? React.createElement(
 				'a',
-				{ onClick: this.toggleCollapsed },
-				React.createElement('i', { className: 'fa ' + (collapsed ? 'fa-plus-square' : 'fa-minus-square'), style: { color: "#FFD569", marginLeft: '-23px' } })
+				{ onClick: this.toggleCollapsed, __source: {
+						fileName: '../../../src/components/Entry.jsx',
+						lineNumber: 97
+					}
+				},
+				React.createElement('i', { className: 'fa ' + (collapsed ? 'fa-plus-square' : 'fa-minus-square'), style: { color: "#FFD569", marginLeft: '-23px' }, __source: {
+						fileName: '../../../src/components/Entry.jsx',
+						lineNumber: 97
+					}
+				})
 			) : '',
 			' ',
 			this.props.keyName,
@@ -104,39 +116,85 @@ var Entry = React.createClass({
 			' ',
 			isMap ? React.createElement(
 				'span',
-				null,
+				{
+					__source: {
+						fileName: '../../../src/components/Entry.jsx',
+						lineNumber: 100
+					}
+				},
 				'{',
 				' ',
 				isMinRemovalDepth ? React.createElement(
 					'a',
-					{ href: '#', onClick: this.deletePath },
-					React.createElement('i', { className: 'fa fa-times-circle', style: { color: "#FD971F" } }),
+					{ href: '#', onClick: this.deletePath, __source: {
+							fileName: '../../../src/components/Entry.jsx',
+							lineNumber: 100
+						}
+					},
+					React.createElement('i', { className: 'fa fa-times-circle', style: { color: "#FD971F" }, __source: {
+							fileName: '../../../src/components/Entry.jsx',
+							lineNumber: 100
+						}
+					}),
 					' '
 				) : '',
 				value.map(function (v, k) {
-					return React.createElement(Entry, _extends({}, _this.props, { cursor: cursor, key: k, value: v, keyName: k, style: hideEntry }));
+					return React.createElement(Entry, _extends({}, _this.props, { cursor: cursor, key: k, value: v, keyName: k, style: hideEntry, __source: {
+							fileName: '../../../src/components/Entry.jsx',
+							lineNumber: 102
+						}
+					}));
 				}).toList(),
-				isMinEditDepth && !collapsed ? React.createElement(AddMapEntry, { cursor: this.props.cursor, keyName: this.props.keyName }) : '',
+				isMinEditDepth && !collapsed ? React.createElement(AddMapEntry, { cursor: this.props.cursor, keyName: this.props.keyName, __source: {
+						fileName: '../../../src/components/Entry.jsx',
+						lineNumber: 104
+					}
+				}) : '',
 				'}'
 			) : isList ? React.createElement(
 				'span',
-				null,
+				{
+					__source: {
+						fileName: '../../../src/components/Entry.jsx',
+						lineNumber: 107
+					}
+				},
 				'[',
 				' ',
 				isMinRemovalDepth ? React.createElement(
 					'a',
-					{ href: '#', onClick: this.deletePath },
-					React.createElement('i', { className: 'fa fa-times-circle', style: { color: "#FD971F" } }),
+					{ href: '#', onClick: this.deletePath, __source: {
+							fileName: '../../../src/components/Entry.jsx',
+							lineNumber: 107
+						}
+					},
+					React.createElement('i', { className: 'fa fa-times-circle', style: { color: "#FD971F" }, __source: {
+							fileName: '../../../src/components/Entry.jsx',
+							lineNumber: 107
+						}
+					}),
 					' '
 				) : '',
 				value.map(function (v, k) {
-					return React.createElement(Entry, _extends({}, _this.props, { cursor: cursor, key: k, value: v, keyName: k, style: hideEntry }));
+					return React.createElement(Entry, _extends({}, _this.props, { cursor: cursor, key: k, value: v, keyName: k, style: hideEntry, __source: {
+							fileName: '../../../src/components/Entry.jsx',
+							lineNumber: 109
+						}
+					}));
 				}).toList(),
-				isMinEditDepth && !collapsed ? React.createElement(AddListEntry, { cursor: this.props.cursor, keyName: this.props.keyName }) : '',
+				isMinEditDepth && !collapsed ? React.createElement(AddListEntry, { cursor: this.props.cursor, keyName: this.props.keyName, __source: {
+						fileName: '../../../src/components/Entry.jsx',
+						lineNumber: 111
+					}
+				}) : '',
 				']'
 			) : React.createElement(
 				'span',
-				{ style: inputContainerStyle },
+				{ style: inputContainerStyle, __source: {
+						fileName: '../../../src/components/Entry.jsx',
+						lineNumber: 113
+					}
+				},
 				'"',
 				React.createElement('input', {
 					type: 'text',
@@ -145,13 +203,25 @@ var Entry = React.createClass({
 					onBlur: this._onBlur,
 					onKeyUp: this._onKeyUp,
 					size: this.state.inputValue.length,
-					style: inputStyle
+					style: inputStyle,
+					__source: {
+						fileName: '../../../src/components/Entry.jsx',
+						lineNumber: 114
+					}
 				}),
 				'" ',
 				React.createElement(
 					'a',
-					{ href: '#', onClick: this.deletePath },
-					React.createElement('i', { className: 'fa fa-times-circle', style: { color: "#FD971F" } })
+					{ href: '#', onClick: this.deletePath, __source: {
+							fileName: '../../../src/components/Entry.jsx',
+							lineNumber: 122
+						}
+					},
+					React.createElement('i', { className: 'fa fa-times-circle', style: { color: "#FD971F" }, __source: {
+							fileName: '../../../src/components/Entry.jsx',
+							lineNumber: 122
+						}
+					})
 				)
 			)
 		);

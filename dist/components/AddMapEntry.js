@@ -15,7 +15,6 @@ var inputStyle = {
 
 var AddMapEntry = React.createClass({
 	displayName: 'AddMapEntry',
-
 	getInitialState: function getInitialState() {
 		return {
 			showOptions: false,
@@ -52,63 +51,128 @@ var AddMapEntry = React.createClass({
 		if (this.state.showOptions) {
 			return React.createElement(
 				'div',
-				{ style: { marginLeft: "20px" } },
+				{ style: { marginLeft: "20px" }, __source: {
+						fileName: '../../../src/components/AddMapEntry.jsx',
+						lineNumber: 50
+					}
+				},
 				React.createElement(
 					'label',
-					{ htmlFor: 'key' },
+					{ htmlFor: 'key', __source: {
+							fileName: '../../../src/components/AddMapEntry.jsx',
+							lineNumber: 51
+						}
+					},
 					'key:'
 				),
 				' ',
-				React.createElement('input', { name: 'key', type: 'text', onChange: this.setKey }),
-				React.createElement('br', null),
+				React.createElement('input', { name: 'key', type: 'text', onChange: this.setKey, __source: {
+						fileName: '../../../src/components/AddMapEntry.jsx',
+						lineNumber: 51
+					}
+				}),
+				React.createElement('br', {
+					__source: {
+						fileName: '../../../src/components/AddMapEntry.jsx',
+						lineNumber: 51
+					}
+				}),
 				React.createElement(
 					'label',
-					{ htmlFor: 'type' },
+					{ htmlFor: 'type', __source: {
+							fileName: '../../../src/components/AddMapEntry.jsx',
+							lineNumber: 52
+						}
+					},
 					'type:'
 				),
 				' ',
 				React.createElement(
 					'select',
-					{ name: 'type', onChange: this.setType },
+					{ name: 'type', onChange: this.setType, __source: {
+							fileName: '../../../src/components/AddMapEntry.jsx',
+							lineNumber: 52
+						}
+					},
 					React.createElement(
 						'option',
-						{ value: 'string' },
+						{ value: 'string', __source: {
+								fileName: '../../../src/components/AddMapEntry.jsx',
+								lineNumber: 53
+							}
+						},
 						'String'
 					),
 					React.createElement(
 						'option',
-						{ value: 'map' },
+						{ value: 'map', __source: {
+								fileName: '../../../src/components/AddMapEntry.jsx',
+								lineNumber: 54
+							}
+						},
 						'Map'
 					),
 					React.createElement(
 						'option',
-						{ value: 'list' },
+						{ value: 'list', __source: {
+								fileName: '../../../src/components/AddMapEntry.jsx',
+								lineNumber: 55
+							}
+						},
 						'List'
 					)
 				),
 				' ',
 				React.createElement(
 					'a',
-					{ href: '#', onClick: this.setPath },
-					React.createElement('i', { className: 'fa fa-plus', style: { color: "#A6E22E" } })
+					{ href: '#', onClick: this.setPath, __source: {
+							fileName: '../../../src/components/AddMapEntry.jsx',
+							lineNumber: 57
+						}
+					},
+					React.createElement('i', { className: 'fa fa-plus', style: { color: "#A6E22E" }, __source: {
+							fileName: '../../../src/components/AddMapEntry.jsx',
+							lineNumber: 57
+						}
+					})
 				),
 				' ',
 				React.createElement(
 					'a',
-					{ href: '#', onClick: this.toggleOptions },
-					React.createElement('i', { className: 'fa fa-remove', style: { color: "#FD971F" } })
+					{ href: '#', onClick: this.toggleOptions, __source: {
+							fileName: '../../../src/components/AddMapEntry.jsx',
+							lineNumber: 58
+						}
+					},
+					React.createElement('i', { className: 'fa fa-remove', style: { color: "#FD971F" }, __source: {
+							fileName: '../../../src/components/AddMapEntry.jsx',
+							lineNumber: 58
+						}
+					})
 				)
 			);
 		}
 		return React.createElement(
 			'div',
-			{ style: { marginLeft: "19px" } },
+			{ style: { marginLeft: "19px" }, __source: {
+					fileName: '../../../src/components/AddMapEntry.jsx',
+					lineNumber: 62
+				}
+			},
 			String.fromCharCode(8627),
 			' ',
 			React.createElement(
 				'a',
-				{ href: '#' },
-				React.createElement('i', { onClick: this.toggleOptions, className: 'fa fa-plus-circle', style: { color: "#A6E22E" } })
+				{ href: '#', __source: {
+						fileName: '../../../src/components/AddMapEntry.jsx',
+						lineNumber: 62
+					}
+				},
+				React.createElement('i', { onClick: this.toggleOptions, className: 'fa fa-plus-circle', style: { color: "#A6E22E" }, __source: {
+						fileName: '../../../src/components/AddMapEntry.jsx',
+						lineNumber: 62
+					}
+				})
 			)
 		);
 	}
