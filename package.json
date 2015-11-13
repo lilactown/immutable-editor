@@ -1,6 +1,6 @@
 {
   "name": "immutable-editor",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "React JSON editor",
   "main": "dist/index.js",
   "scripts": {
