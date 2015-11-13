@@ -26,11 +26,12 @@ const HistoryModel = assign({}, EventEmitter.prototype, {
 		this.emitChange();
 	},
 	push(value) {
-		if (!_model.history.includes(value)) {
+		// console.log(!_model.history.includes(value));
+		// if (!_model.history.includes(value)) {
 			_model.history = _model.history.skipLast(_model.offset-1).push(value);
 			_model.offset = 1;
 			this.emitChange();
-		}
+		// }
 	},
 	pop() {
 		const last = _model.last();

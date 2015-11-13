@@ -22,6 +22,7 @@ export class Editor extends Component {
 	static undo(immutable = false) {
 		HistoryModel.incOffset();
 		const nextState = HistoryModel.get(HistoryModel.getAll().offset);
+		console.log(nextState.toJS());
 		// this.props.cursor.update((v) => { return nextState; });
 		return immutable ? nextState : nextState.toJS();
 	}
@@ -46,8 +47,8 @@ export class Editor extends Component {
 		const data = Immutable.fromJS(this.props.data);
 
 		const rootCursor = Cursor.from(data, (newData, oldData, path) => {
-			console.log(newData !== oldData);
 			if (newData !== oldData) {
+				console.log(HistoryModel.getAll().history.toJS());
 				HistoryModel.push(newData);
 				this.props.onUpdate(this.props.immutable ? newData : newData.toJS());
 			}
@@ -91,5 +92,3 @@ Editor.propTypes = {
 	minEditDepth: React.PropTypes.number,
 	minRemovalDepth: React.PropTypes.number
 };
-
-console.log(HistoryModel);
