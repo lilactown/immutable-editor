@@ -1,5 +1,5 @@
 // Top-level component
-import React from 'react';
+import React, {Component} from 'react';
 import Immutable, { Map, List } from 'immutable';
 import Cursor from 'immutable/contrib/cursor';
 import fs from '../libs/FileSaver';
@@ -18,38 +18,30 @@ const editorStyle = {
 	WebkitFontSmoothing: "initial",
 };
 
-export const Editor = React.createClass({
-	statics: {
-		undo(immutable = false) {
-			HistoryModel.incOffset();
-			const nextState = HistoryModel.get(HistoryModel.getAll().offset);
-			// this.props.cursor.update((v) => { return nextState; });
-			return immutable ? nextState : nextState.toJS();
-		},
-		redo(immutable = false) {
-			HistoryModel.decOffset();
-			const nextState = HistoryModel.get(HistoryModel.getAll().offset);
-			// this.props.cursor.update((v) => { return nextState; });
-			return immutable ? nextState : nextState.toJS();
-		},
-		save(name) {
-			const blob = new Blob([JSON.stringify(HistoryModel.get(HistoryModel.getAll().offset).toJS())], {type: "application/json;charset=utf-8"});
-			fs.saveAs(blob, name);
-		}
-	},
-	propTypes: {
-		data: React.PropTypes.object.isRequired,
-		onUpdate: React.PropTypes.func.isRequired,
-		immutable: React.PropTypes.bool,
-		minEditDepth: React.PropTypes.number,
-		minRemovalDepth: React.PropTypes.number
-	},
+export class Editor extends Component {
+	static undo(immutable = false) {
+		HistoryModel.incOffset();
+		const nextState = HistoryModel.get(HistoryModel.getAll().offset);
+		// this.props.cursor.update((v) => { return nextState; });
+		return immutable ? nextState : nextState.toJS();
+	}
+	static redo(immutable = false) {
+		HistoryModel.decOffset();
+		const nextState = HistoryModel.get(HistoryModel.getAll().offset);
+		// this.props.cursor.update((v) => { return nextState; });
+		return immutable ? nextState : nextState.toJS();
+	}
+	static save(name) {
+		const blob = new Blob([JSON.stringify(HistoryModel.get(HistoryModel.getAll().offset).toJS())], {type: "application/json;charset=utf-8"});
+		fs.saveAs(blob, name);
+	}
+
 	componentDidMount() {
 		HistoryModel.push(Immutable.fromJS(this.props.data));
-	},
+	}
 	shouldComponentUpdate(nextProps) {
 		return this.props.data !== nextProps.data;
-	},
+	}
 	render() {
 		const data = Immutable.fromJS(this.props.data);
 
@@ -61,8 +53,8 @@ export const Editor = React.createClass({
 			}
 		});
 
-		const isMap = Map.isMap(this.props.data);
-		const isList = List.isList(this.props.data);
+		const isMap = Map.isMap(data);
+		const isList = List.isList(data);
 		return (
 			<div style={editorStyle}>
 				<div style={{ margin: "0px 10px" }}>
@@ -90,6 +82,14 @@ export const Editor = React.createClass({
 			</div>
 		);
 	}
-});
+}
 
-window.HistoryModel = HistoryModel;
+Editor.propTypes = {
+	data: React.PropTypes.object.isRequired,
+	onUpdate: React.PropTypes.func.isRequired,
+	immutable: React.PropTypes.bool,
+	minEditDepth: React.PropTypes.number,
+	minRemovalDepth: React.PropTypes.number
+};
+
+console.log(HistoryModel);
