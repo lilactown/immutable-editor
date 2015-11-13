@@ -43,11 +43,12 @@ var HistoryModel = (0, _objectAssign2.default)({}, _events2.default.prototype, {
 		this.emitChange();
 	},
 	push: function push(value) {
-		if (!_model.history.includes(value)) {
-			_model.history = _model.history.skipLast(_model.offset - 1).push(value);
-			_model.offset = 1;
-			this.emitChange();
-		}
+		// console.log(!_model.history.includes(value));
+		// if (!_model.history.includes(value)) {
+		_model.history = _model.history.skipLast(_model.offset - 1).push(value);
+		_model.offset = 1;
+		this.emitChange();
+		// }
 	},
 	pop: function pop() {
 		var last = _model.last();

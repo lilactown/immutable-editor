@@ -9,6 +9,6 @@ var _Editor = require('./components/Editor');
 Object.defineProperty(exports, 'default', {
   enumerable: true,
   get: function get() {
-    return _Editor.default;
+    return _Editor.Editor;
   }
 });
