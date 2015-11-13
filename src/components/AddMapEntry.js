@@ -1,6 +1,5 @@
-const React = require('react');
-const Immutable = require('immutable');
-const {List, Map} = Immutable;
+import React from 'react';
+import Immutable, {List, Map} from 'immutable';
 
 const inputStyle = {
 	fontFamily: '"Source Code Pro", monospace',
@@ -10,7 +9,7 @@ const inputStyle = {
 	wordBreak: 'break-word'
 }
 
-const AddMapEntry = React.createClass({
+export const AddMapEntry = React.createClass({
 	getInitialState() {
 		return {
 			showOptions: false,
@@ -62,5 +61,3 @@ const AddMapEntry = React.createClass({
 		return (<div style={{marginLeft: "19px"}}>{String.fromCharCode(8627)} <a href="#"><i onClick={this.toggleOptions} className="fa fa-plus-circle" style={{color: "#A6E22E"}} /></a></div>);
 	}
 });
-
-module.exports = AddMapEntry;

@@ -1,8 +1,7 @@
-const React = require('react');
-const Immutable = require('immutable');
-const {List, Map} = Immutable;
+import React from 'react';
+import Immutable, {List, Map} from 'immutable';
 
-const AddListEntry = React.createClass({
+export const AddListEntry = React.createClass({
 	getInitialState() {
 		return {
 			showOptions: false,
@@ -48,5 +47,3 @@ const AddListEntry = React.createClass({
 		return (<div style={{marginLeft: "19px"}}>{String.fromCharCode(8627)} <a href="#"><i onClick={this.toggleOptions} className="fa fa-plus-circle add" style={{color: "#A6E22E"}} /></a></div>);
 	}
 });
-
-module.exports = AddListEntry;

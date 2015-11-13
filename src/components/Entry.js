@@ -1,11 +1,10 @@
-const React = require('react');
-const Immutable = require('immutable');
-const Cursor = require('immutable/contrib/cursor');
-const {List, Map} = Immutable;
-const assign = require('object-assign');
+import React from 'react';
+import Immutable, {List, Map} from 'immutable';
+import Cursor from 'immutable/contrib/cursor';
+import assign from 'object-assign';
 
-const AddMapEntry = require('./AddMapEntry');
-const AddListEntry = require('./AddListEntry');
+import {AddMapEntry} from './AddMapEntry';
+import {AddListEntry} from './AddListEntry';
 
 const inputStyle = {
 	fontFamily: '"Source Code Pro", monospace',
@@ -22,7 +21,7 @@ const inputContainerStyle = {
 	// fontSize: '11px'
 };
 
-const Entry = React.createClass({
+export const Entry = React.createClass({
 	propTypes: {
 		keyName: React.PropTypes.oneOfType([
 			React.PropTypes.string,
@@ -126,5 +125,3 @@ const Entry = React.createClass({
 		);
 	}
 });
-
-module.exports = Entry;

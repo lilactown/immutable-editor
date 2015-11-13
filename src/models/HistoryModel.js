@@ -1,6 +1,6 @@
-const Immutable = require('immutable');
-const EventEmitter = require('events');
-const assign = require('object-assign');
+import Immutable from 'immutable';
+import EventEmitter from 'events';
+import assign from 'object-assign';
 const CHANGE_EVENT = 'change';
 
 let _model = {
@@ -57,4 +57,4 @@ const HistoryModel = assign({}, EventEmitter.prototype, {
 	}
 });
 
-module.exports = HistoryModel;
+export default HistoryModel;

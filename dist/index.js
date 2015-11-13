@@ -1,5 +1,14 @@
 'use strict';
 
-// index.js
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-module.exports = require('./components/Editor');
+var _Editor = require('./components/Editor');
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _Editor.default;
+  }
+});

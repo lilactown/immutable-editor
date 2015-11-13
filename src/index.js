@@ -1,3 +1,3 @@
 // index.js
 
-module.exports = require('./components/Editor');
+export {Editor as default} from './components/Editor';

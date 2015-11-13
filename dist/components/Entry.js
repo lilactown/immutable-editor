@@ -2,16 +2,32 @@
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var React = require('react');
-var Immutable = require('immutable');
-var Cursor = require('immutable/contrib/cursor');
-var List = Immutable.List;
-var Map = Immutable.Map;
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.Entry = undefined;
 
-var assign = require('object-assign');
+var _react = require('react');
 
-var AddMapEntry = require('./AddMapEntry');
-var AddListEntry = require('./AddListEntry');
+var _react2 = _interopRequireDefault(_react);
+
+var _immutable = require('immutable');
+
+var _immutable2 = _interopRequireDefault(_immutable);
+
+var _cursor = require('immutable/contrib/cursor');
+
+var _cursor2 = _interopRequireDefault(_cursor);
+
+var _objectAssign = require('object-assign');
+
+var _objectAssign2 = _interopRequireDefault(_objectAssign);
+
+var _AddMapEntry = require('./AddMapEntry');
+
+var _AddListEntry = require('./AddListEntry');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var inputStyle = {
 	fontFamily: '"Source Code Pro", monospace',
@@ -28,14 +44,14 @@ var inputContainerStyle = {
 };
 
 // fontSize: '11px'
-var Entry = React.createClass({
+var Entry = exports.Entry = _react2.default.createClass({
 	displayName: 'Entry',
 
 	propTypes: {
-		keyName: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]).isRequired,
-		value: React.PropTypes.oneOfType([React.PropTypes.instanceOf(List), React.PropTypes.instanceOf(Map), React.PropTypes.string]).isRequired,
-		minEditDepth: React.PropTypes.number,
-		minRemovalDepth: React.PropTypes.number
+		keyName: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]).isRequired,
+		value: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.instanceOf(_immutable.List), _react2.default.PropTypes.instanceOf(_immutable.Map), _react2.default.PropTypes.string]).isRequired,
+		minEditDepth: _react2.default.PropTypes.number,
+		minRemovalDepth: _react2.default.PropTypes.number
 	},
 	getInitialState: function getInitialState() {
 		return {
@@ -86,27 +102,27 @@ var Entry = React.createClass({
 
 		var isMinRemovalDepth = this.props.cursor['_keyPath'].length + 1 >= this.props.minRemovalDepth;
 		var isMinEditDepth = this.props.cursor['_keyPath'].length + 1 >= this.props.minEditDepth;
-		var isMap = Map.isMap(value);
-		var isList = List.isList(value);
+		var isMap = _immutable.Map.isMap(value);
+		var isList = _immutable.List.isList(value);
 
 		var hideEntry = { display: collapsed ? 'none' : 'block' };
-		return React.createElement(
+		return _react2.default.createElement(
 			'div',
-			{ style: assign({ marginLeft: "20px" }, this.props.style), __source: {
+			{ style: (0, _objectAssign2.default)({ marginLeft: "20px" }, this.props.style), __source: {
 					fileName: '../../../src/components/Entry.jsx',
-					lineNumber: 96
+					lineNumber: 95
 				}
 			},
-			isMap || isList ? React.createElement(
+			isMap || isList ? _react2.default.createElement(
 				'a',
 				{ onClick: this.toggleCollapsed, __source: {
 						fileName: '../../../src/components/Entry.jsx',
-						lineNumber: 97
+						lineNumber: 96
 					}
 				},
-				React.createElement('i', { className: 'fa ' + (collapsed ? 'fa-plus-square' : 'fa-minus-square'), style: { color: "#FFD569", marginLeft: '-23px' }, __source: {
+				_react2.default.createElement('i', { className: 'fa ' + (collapsed ? 'fa-plus-square' : 'fa-minus-square'), style: { color: "#FFD569", marginLeft: '-23px' }, __source: {
 						fileName: '../../../src/components/Entry.jsx',
-						lineNumber: 97
+						lineNumber: 96
 					}
 				})
 			) : '',
@@ -114,89 +130,89 @@ var Entry = React.createClass({
 			this.props.keyName,
 			':',
 			' ',
-			isMap ? React.createElement(
+			isMap ? _react2.default.createElement(
 				'span',
 				{
 					__source: {
 						fileName: '../../../src/components/Entry.jsx',
-						lineNumber: 100
+						lineNumber: 99
 					}
 				},
 				'{',
 				' ',
-				isMinRemovalDepth ? React.createElement(
+				isMinRemovalDepth ? _react2.default.createElement(
 					'a',
 					{ href: '#', onClick: this.deletePath, __source: {
 							fileName: '../../../src/components/Entry.jsx',
-							lineNumber: 100
+							lineNumber: 99
 						}
 					},
-					React.createElement('i', { className: 'fa fa-times-circle', style: { color: "#FD971F" }, __source: {
+					_react2.default.createElement('i', { className: 'fa fa-times-circle', style: { color: "#FD971F" }, __source: {
 							fileName: '../../../src/components/Entry.jsx',
-							lineNumber: 100
+							lineNumber: 99
 						}
 					}),
 					' '
 				) : '',
 				value.map(function (v, k) {
-					return React.createElement(Entry, _extends({}, _this.props, { cursor: cursor, key: k, value: v, keyName: k, style: hideEntry, __source: {
+					return _react2.default.createElement(Entry, _extends({}, _this.props, { cursor: cursor, key: k, value: v, keyName: k, style: hideEntry, __source: {
 							fileName: '../../../src/components/Entry.jsx',
-							lineNumber: 102
+							lineNumber: 101
 						}
 					}));
 				}).toList(),
-				isMinEditDepth && !collapsed ? React.createElement(AddMapEntry, { cursor: this.props.cursor, keyName: this.props.keyName, __source: {
+				isMinEditDepth && !collapsed ? _react2.default.createElement(_AddMapEntry.AddMapEntry, { cursor: this.props.cursor, keyName: this.props.keyName, __source: {
 						fileName: '../../../src/components/Entry.jsx',
-						lineNumber: 104
+						lineNumber: 103
 					}
 				}) : '',
 				'}'
-			) : isList ? React.createElement(
+			) : isList ? _react2.default.createElement(
 				'span',
 				{
 					__source: {
 						fileName: '../../../src/components/Entry.jsx',
-						lineNumber: 107
+						lineNumber: 106
 					}
 				},
 				'[',
 				' ',
-				isMinRemovalDepth ? React.createElement(
+				isMinRemovalDepth ? _react2.default.createElement(
 					'a',
 					{ href: '#', onClick: this.deletePath, __source: {
 							fileName: '../../../src/components/Entry.jsx',
-							lineNumber: 107
+							lineNumber: 106
 						}
 					},
-					React.createElement('i', { className: 'fa fa-times-circle', style: { color: "#FD971F" }, __source: {
+					_react2.default.createElement('i', { className: 'fa fa-times-circle', style: { color: "#FD971F" }, __source: {
 							fileName: '../../../src/components/Entry.jsx',
-							lineNumber: 107
+							lineNumber: 106
 						}
 					}),
 					' '
 				) : '',
 				value.map(function (v, k) {
-					return React.createElement(Entry, _extends({}, _this.props, { cursor: cursor, key: k, value: v, keyName: k, style: hideEntry, __source: {
+					return _react2.default.createElement(Entry, _extends({}, _this.props, { cursor: cursor, key: k, value: v, keyName: k, style: hideEntry, __source: {
 							fileName: '../../../src/components/Entry.jsx',
-							lineNumber: 109
+							lineNumber: 108
 						}
 					}));
 				}).toList(),
-				isMinEditDepth && !collapsed ? React.createElement(AddListEntry, { cursor: this.props.cursor, keyName: this.props.keyName, __source: {
+				isMinEditDepth && !collapsed ? _react2.default.createElement(_AddListEntry.AddListEntry, { cursor: this.props.cursor, keyName: this.props.keyName, __source: {
 						fileName: '../../../src/components/Entry.jsx',
-						lineNumber: 111
+						lineNumber: 110
 					}
 				}) : '',
 				']'
-			) : React.createElement(
+			) : _react2.default.createElement(
 				'span',
 				{ style: inputContainerStyle, __source: {
 						fileName: '../../../src/components/Entry.jsx',
-						lineNumber: 113
+						lineNumber: 112
 					}
 				},
 				'"',
-				React.createElement('input', {
+				_react2.default.createElement('input', {
 					type: 'text',
 					value: this.state.inputValue,
 					onChange: this._onChange,
@@ -206,20 +222,20 @@ var Entry = React.createClass({
 					style: inputStyle,
 					__source: {
 						fileName: '../../../src/components/Entry.jsx',
-						lineNumber: 114
+						lineNumber: 113
 					}
 				}),
 				'" ',
-				React.createElement(
+				_react2.default.createElement(
 					'a',
 					{ href: '#', onClick: this.deletePath, __source: {
 							fileName: '../../../src/components/Entry.jsx',
-							lineNumber: 122
+							lineNumber: 121
 						}
 					},
-					React.createElement('i', { className: 'fa fa-times-circle', style: { color: "#FD971F" }, __source: {
+					_react2.default.createElement('i', { className: 'fa fa-times-circle', style: { color: "#FD971F" }, __source: {
 							fileName: '../../../src/components/Entry.jsx',
-							lineNumber: 122
+							lineNumber: 121
 						}
 					})
 				)
@@ -227,5 +243,3 @@ var Entry = React.createClass({
 		);
 	}
 });
-
-module.exports = Entry;

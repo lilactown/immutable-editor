@@ -1,5 +1,5 @@
 import React from 'react';
-import Editor from '../dist';
+import Editor from '../src';
 
 const MyApp = React.createClass({
 	getInitialState() {

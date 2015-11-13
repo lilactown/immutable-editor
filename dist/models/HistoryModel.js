@@ -1,16 +1,31 @@
 'use strict';
 
-var Immutable = require('immutable');
-var EventEmitter = require('events');
-var assign = require('object-assign');
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _immutable = require('immutable');
+
+var _immutable2 = _interopRequireDefault(_immutable);
+
+var _events = require('events');
+
+var _events2 = _interopRequireDefault(_events);
+
+var _objectAssign = require('object-assign');
+
+var _objectAssign2 = _interopRequireDefault(_objectAssign);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var CHANGE_EVENT = 'change';
 
 var _model = {
-	history: Immutable.List([]),
+	history: _immutable2.default.List([]),
 	offset: 1
 };
 
-var HistoryModel = assign({}, EventEmitter.prototype, {
+var HistoryModel = (0, _objectAssign2.default)({}, _events2.default.prototype, {
 	getAll: function getAll() {
 		return _model;
 	},
@@ -59,4 +74,4 @@ var HistoryModel = assign({}, EventEmitter.prototype, {
 	}
 });
 
-module.exports = HistoryModel;
+exports.default = HistoryModel;

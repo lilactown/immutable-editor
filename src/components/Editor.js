@@ -1,16 +1,14 @@
 // Top-level component
-const React = require('react');
-const Immutable = require('immutable');
-const { Map, List } = Immutable;
-const Cursor = require('immutable/contrib/cursor');
-const fs = require('../libs/FileSaver');
+import React from 'react';
+import Immutable, { Map, List } from 'immutable';
+import Cursor from 'immutable/contrib/cursor';
+import fs from '../libs/FileSaver';
 
-const HistoryModel = require('../models/HistoryModel');
+import HistoryModel from '../models/HistoryModel';
 
-const Entry = require('./Entry');
-// const Toolbar = require('./Toolbar');
-const AddMapEntry = require('./AddMapEntry');
-const AddListEntry = require('./AddListEntry');
+import {Entry} from './Entry';
+import {AddMapEntry} from './AddMapEntry';
+import {AddListEntry} from './AddListEntry';
 
 const editorStyle = {
 	background: '#282828',
@@ -20,7 +18,7 @@ const editorStyle = {
 	WebkitFontSmoothing: "initial",
 };
 
-const Editor = React.createClass({
+export const Editor = React.createClass({
 	statics: {
 		undo(immutable = false) {
 			HistoryModel.incOffset();
@@ -95,5 +93,3 @@ const Editor = React.createClass({
 });
 
 window.HistoryModel = HistoryModel;
-
-module.exports = Editor;

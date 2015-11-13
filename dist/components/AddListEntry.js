@@ -1,11 +1,21 @@
 'use strict';
 
-var React = require('react');
-var Immutable = require('immutable');
-var List = Immutable.List;
-var Map = Immutable.Map;
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.AddListEntry = undefined;
 
-var AddListEntry = React.createClass({
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _immutable = require('immutable');
+
+var _immutable2 = _interopRequireDefault(_immutable);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var AddListEntry = exports.AddListEntry = _react2.default.createClass({
 	displayName: 'AddListEntry',
 	getInitialState: function getInitialState() {
 		return {
@@ -16,8 +26,8 @@ var AddListEntry = React.createClass({
 	pushPath: function pushPath(e) {
 		e.preventDefault();
 		var types = {
-			map: new Map({}),
-			list: new List([]),
+			map: new _immutable.Map({}),
+			list: new _immutable.List([]),
 			string: ""
 		};
 		if (this.props.keyName) {
@@ -36,112 +46,110 @@ var AddListEntry = React.createClass({
 	},
 	render: function render() {
 		if (this.state.showOptions) {
-			return React.createElement(
+			return _react2.default.createElement(
 				'div',
 				{ style: { marginLeft: "20px" }, __source: {
 						fileName: '../../../src/components/AddListEntry.jsx',
-						lineNumber: 37
+						lineNumber: 36
 					}
 				},
-				React.createElement(
+				_react2.default.createElement(
 					'label',
 					{ htmlFor: 'type', __source: {
 							fileName: '../../../src/components/AddListEntry.jsx',
-							lineNumber: 38
+							lineNumber: 37
 						}
 					},
 					'type:'
 				),
 				' ',
-				React.createElement(
+				_react2.default.createElement(
 					'select',
 					{ name: 'type', onChange: this.setType, __source: {
 							fileName: '../../../src/components/AddListEntry.jsx',
-							lineNumber: 38
+							lineNumber: 37
 						}
 					},
-					React.createElement(
+					_react2.default.createElement(
 						'option',
 						{ value: 'string', __source: {
 								fileName: '../../../src/components/AddListEntry.jsx',
-								lineNumber: 39
+								lineNumber: 38
 							}
 						},
 						'String'
 					),
-					React.createElement(
+					_react2.default.createElement(
 						'option',
 						{ value: 'map', __source: {
 								fileName: '../../../src/components/AddListEntry.jsx',
-								lineNumber: 40
+								lineNumber: 39
 							}
 						},
 						'Map'
 					),
-					React.createElement(
+					_react2.default.createElement(
 						'option',
 						{ value: 'list', __source: {
 								fileName: '../../../src/components/AddListEntry.jsx',
-								lineNumber: 41
+								lineNumber: 40
 							}
 						},
 						'List'
 					)
 				),
 				' ',
-				React.createElement(
+				_react2.default.createElement(
 					'a',
 					{ href: '#', onClick: this.pushPath, __source: {
 							fileName: '../../../src/components/AddListEntry.jsx',
-							lineNumber: 43
+							lineNumber: 42
 						}
 					},
-					React.createElement('i', { className: 'fa fa-plus', style: { color: "#A6E22E" }, __source: {
+					_react2.default.createElement('i', { className: 'fa fa-plus', style: { color: "#A6E22E" }, __source: {
 							fileName: '../../../src/components/AddListEntry.jsx',
-							lineNumber: 43
+							lineNumber: 42
 						}
 					})
 				),
 				' ',
-				React.createElement(
+				_react2.default.createElement(
 					'a',
 					{ href: '#', onClick: this.toggleOptions, __source: {
 							fileName: '../../../src/components/AddListEntry.jsx',
-							lineNumber: 44
+							lineNumber: 43
 						}
 					},
-					React.createElement('i', { className: 'fa fa-remove', style: { color: "#FD971F" }, __source: {
+					_react2.default.createElement('i', { className: 'fa fa-remove', style: { color: "#FD971F" }, __source: {
 							fileName: '../../../src/components/AddListEntry.jsx',
-							lineNumber: 44
+							lineNumber: 43
 						}
 					})
 				)
 			);
 		}
-		return React.createElement(
+		return _react2.default.createElement(
 			'div',
 			{ style: { marginLeft: "19px" }, __source: {
 					fileName: '../../../src/components/AddListEntry.jsx',
-					lineNumber: 48
+					lineNumber: 47
 				}
 			},
 			String.fromCharCode(8627),
 			' ',
-			React.createElement(
+			_react2.default.createElement(
 				'a',
 				{ href: '#', __source: {
 						fileName: '../../../src/components/AddListEntry.jsx',
-						lineNumber: 48
+						lineNumber: 47
 					}
 				},
-				React.createElement('i', { onClick: this.toggleOptions, className: 'fa fa-plus-circle add', style: { color: "#A6E22E" }, __source: {
+				_react2.default.createElement('i', { onClick: this.toggleOptions, className: 'fa fa-plus-circle add', style: { color: "#A6E22E" }, __source: {
 						fileName: '../../../src/components/AddListEntry.jsx',
-						lineNumber: 48
+						lineNumber: 47
 					}
 				})
 			)
 		);
 	}
 });
-
-module.exports = AddListEntry;
